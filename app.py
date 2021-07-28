@@ -4,6 +4,11 @@ from tkinter import *
 import os
 
 
+primary = "#492540"
+secondary = "#f6ea8c"
+danger_dark = "#c03546"
+danger_light = "#f26d5b"
+
 # Designing window for registration
 
 def register():
@@ -154,13 +159,15 @@ def delete_user_not_found_screen():
 def main_account_screen():
     global main_screen
     main_screen = Tk()
-    main_screen.geometry("300x250")
-    main_screen.title("Account Login")
-    Label(text="Select Your Choice", bg="blue", width="300", height="2", font=("Calibri", 13)).pack()
+    width = main_screen.winfo_screenwidth()
+    height = main_screen.winfo_screenheight()
+    main_screen.geometry("%dx%d" % (width, height))
+    main_screen.title("Bus Reservation")
+    Label(text="Select Your Choice", bg=primary, width="300",fg="white", height="2", font=("Calibri", 20)).pack()
+    Label(text="",height="10").pack()
+    Button(text="Login", height="2",width="30",bg=primary,fg="white",font=("Calibri", 15), command=login).pack()
     Label(text="").pack()
-    Button(text="Login", height="2", width="30", command=login).pack()
-    Label(text="").pack()
-    Button(text="Register", height="2", width="30", command=register).pack()
+    Button(text="Register", height="2", width="30",bg=primary,fg="white",font=("Calibri",15), command=register).pack()
 
     main_screen.mainloop()
 
