@@ -15,6 +15,7 @@ def home_screen(user, parent):
     _user = user
 
     home = Tk()
+    
     width = home.winfo_screenwidth()
     height = home.winfo_screenheight()
     home.geometry("%dx%d" % (width, height))
@@ -25,6 +26,8 @@ def home_screen(user, parent):
     for files in list_of_files:
         file_count = file_count + 1
 
+    		 
+	
     Label(home, text=F"Welcome {user} ", bg=primary, width="90", fg="white", height="2", font=("Calibri", 20)).pack(
         side=TOP)
 
