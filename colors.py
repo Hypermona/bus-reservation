@@ -1,0 +1,6 @@
+primary = "#492540"
+secondary = "#f6ea8c"
+danger_dark = "#c03546"
+danger_light = "#f26d5b"
+seat_color = "#f85959"
+success_dark = "#0b8457"

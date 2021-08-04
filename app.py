@@ -2,12 +2,13 @@
 
 from tkinter import *
 import os
-
+from Pages import home_screen
 
 primary = "#492540"
 secondary = "#f6ea8c"
 danger_dark = "#c03546"
 danger_light = "#f26d5b"
+
 
 # Designing window for registration
 
@@ -74,7 +75,7 @@ def register_user():
     username_info = username.get()
     password_info = password.get()
 
-    file = open(username_info, "w")
+    file = open(F"data\\users\\{username_info}", "w")
     file.write(username_info + "\n")
     file.write(password_info)
     file.close()
@@ -83,6 +84,10 @@ def register_user():
     password_entry.delete(0, END)
 
     Label(register_screen, text="Registration Success", fg="green", font=("calibri", 11)).pack()
+    Button(register_screen, text="Goto Home", width=10, height=1,
+           command=home_screen(user=username_info, parent=home_screen)).pack()
+    register_screen.destroy()
+    main_screen.destroy()
 
 
 # Implementing event on login button
@@ -93,12 +98,15 @@ def login_verify():
     username_login_entry.delete(0, END)
     password_login_entry.delete(0, END)
 
-    list_of_files = os.listdir()
+    list_of_files = os.listdir(path="data\\users")
     if username1 in list_of_files:
-        file1 = open(username1, "r")
+        file1 = open(F"data\\users\\{username1}", "r")
         verify = file1.read().splitlines()
         if password1 in verify:
-            login_sucess()
+            Button(login_screen, text="Goto Home", width=10, height=1,
+                   command=home_screen(user=username1, parent=main_account_screen)).pack()
+            login_screen.destroy()
+            main_screen.destroy()
 
         else:
             password_not_recognised()
@@ -108,14 +116,6 @@ def login_verify():
 
 
 # Designing popup for login success
-
-def login_sucess():
-    global login_success_screen
-    login_success_screen = Toplevel(login_screen)
-    login_success_screen.title("Success")
-    login_success_screen.geometry("150x100")
-    Label(login_success_screen, text="Login Success").pack()
-    Button(login_success_screen, text="OK", command=delete_login_success).pack()
 
 
 # Designing popup for login invalid password
@@ -142,9 +142,6 @@ def user_not_found():
 
 # Deleting popups
 
-def delete_login_success():
-    login_success_screen.destroy()
-
 
 def delete_password_not_recognised():
     password_not_recog_screen.destroy()
@@ -163,11 +160,12 @@ def main_account_screen():
     height = main_screen.winfo_screenheight()
     main_screen.geometry("%dx%d" % (width, height))
     main_screen.title("Bus Reservation")
-    Label(text="Select Your Choice", bg=primary, width="300",fg="white", height="2", font=("Calibri", 20)).pack()
-    Label(text="",height="10").pack()
-    Button(text="Login", height="2",width="30",bg=primary,fg="white",font=("Calibri", 15), command=login).pack()
+    Label(text="Select Your Choice", bg=primary, width="300", fg="white", height="2", font=("Calibri", 20)).pack()
+    Label(text="", height="10").pack()
+    Button(text="Login", height="2", width="30", bg=primary, fg="white", font=("Calibri", 15), command=login).pack()
     Label(text="").pack()
-    Button(text="Register", height="2", width="30",bg=primary,fg="white",font=("Calibri",15), command=register).pack()
+    Button(text="Register", height="2", width="30", bg=primary, fg="white", font=("Calibri", 15),
+           command=register).pack()
 
     main_screen.mainloop()
 
