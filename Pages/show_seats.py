@@ -1,6 +1,7 @@
 from tkinter import *
 import json
 from colors import *
+from PIL import Image
 
 
 def show_seats_screen(bus_no_info):
@@ -26,8 +27,11 @@ def show_seats_screen(bus_no_info):
     for seat, name in data["seats"].items():
         if col != 3:
             if name != "":
-                Label(show_seats, text=F"{seat} {name}", fg="white", width="10", height="4", bg="green",
-                      font=("Calibri", 20)).grid(row=row, column=col, padx="25", pady="2", sticky="W")
+                label_seat = Label(show_seats, text=F"{seat} {name}", fg="white",
+                                   width="10", height="4",
+                                   bg="green",
+                                   font=("Calibri", 20))
+                label_seat.grid(row=row, column=col, padx="25", pady="2", sticky="W")
             else:
                 Label(show_seats, text=F"{seat} {name}", fg="white", width="10", height="4", bg=seat_color,
                       font=("Calibri", 20)).grid(row=row, column=col, padx="25", pady="2", sticky="W")

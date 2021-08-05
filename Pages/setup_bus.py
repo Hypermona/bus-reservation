@@ -41,6 +41,8 @@ def setup_bus(home):
     from_ = StringVar()
     to = StringVar()
 
+    Label(setup_bus_screen, image=seat_image).pack()
+    print(cw)
     Label(setup_bus_screen, text="Please enter details below", bg="blue").pack()
     Label(setup_bus_screen, text="").pack()
     Label(setup_bus_screen, text="Bus No * ").pack()
