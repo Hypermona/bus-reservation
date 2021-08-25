@@ -15,7 +15,7 @@ def home_screen(user, parent):
     _user = user
 
     home = Tk()
-    
+
     width = home.winfo_screenwidth()
     height = home.winfo_screenheight()
     home.geometry("%dx%d" % (width, height))
@@ -26,8 +26,6 @@ def home_screen(user, parent):
     for files in list_of_files:
         file_count = file_count + 1
 
-    		 
-	
     Label(home, text=F"Welcome {user} ", bg=primary, width="90", fg="white", height="2", font=("Calibri", 20)).pack(
         side=TOP)
 
@@ -41,12 +39,12 @@ def home_screen(user, parent):
            command=ask_bus_no).pack()
     Button(home, text="Cancel Booking", bg=primary, fg="white", width="20", height="2", font=("Calibri", 20),
            command=canceling_seat).pack()
-    Button(home, text="Logout", bg=primary, width="20", fg="white", height="2", font=("Calibri", 20), command=logout).pack()
+    Button(home, text="Logout", bg=primary, width="20", fg="white", height="2", font=("Calibri", 20),
+           command=logout).pack()
 
 
 def logout():
     home.destroy()
-    _parent()
 
 
 def register_bus():

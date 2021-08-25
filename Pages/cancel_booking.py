@@ -11,7 +11,7 @@ def cancel_booking_screen(parent, user):
     global _user
     _user = user
     cancel_booking = Toplevel(parent)
-    cancel_booking.title("Book a Seat")
+    cancel_booking.title("Cancel booking")
     cancel_booking.geometry("700x400")
 
     bus_options = []

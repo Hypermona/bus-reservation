@@ -162,13 +162,14 @@ def main_account_screen():
     width = main_screen.winfo_screenwidth()
     height = main_screen.winfo_screenheight()
     main_screen.geometry("%dx%d" % (width, height))
-    main_screen.title("Bus Reservation")
+    main_screen.title("Bus Reservation System")
 
     print("Please wait, we are launching...")
     image_file = "images/bus_bg_t.gif"
 
     info = Image.open(image_file)
     frames = info.n_frames
+    PhotoImage
     bg = [PhotoImage(file=image_file, format=F"gif -index {i}") for i in range(frames)]
 
     def animation(count):
@@ -178,32 +179,11 @@ def main_account_screen():
         if count == frames:
             count = 0
 
-        main_screen.after(20, lambda: animation(count))
+        main_screen.after(10, lambda: animation(count))
 
     gif_lable = Label(image="")
     gif_lable.pack()
     animation(0)
-
-    # # Create Canvas
-    # canvas1 = Canvas(main_screen, width=500,
-    #                  height=500)
-    #
-    # canvas1.pack(fill="both", expand=True)
-
-    # Display image
-    # canvas1.create_image(0, 0, image=bg,
-    #                      anchor="nw")
-    # btnlogin = Button(main_screen, text="Login", height="2", width="30", bg=primary, fg="white", font=("Calibri", 15),
-    #                   command=login)
-    # canvas_log = canvas1.create_window(600, 250,
-    #                                    anchor="nw",
-    #                                    window=btnlogin)
-    # btnregister = Button(text="Register", height="2", width="30", bg=primary, fg="white", font=("Calibri", 15),
-    #                      command=register)
-    # canvas_reg = canvas1.create_window(600, 350, anchor="nw", window=btnregister)
-
-    # Label(text="Select Your Choice", bg=primary, width="300", fg="white", height="2", font=("Calibri", 20)).pack()
-    # Label(text="", height="10").pack()
     Button(text="Login", height="2", width="30", bg=primary, fg="white", font=("Calibri", 15), command=login).pack()
     Label(text="").pack()
     Button(text="Register", height="2", width="30", bg=primary, fg="white", font=("Calibri", 15),
